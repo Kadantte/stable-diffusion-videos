@@ -96,28 +96,26 @@ def _attach(package_name, submodules=None, submod_attrs=None):
     return __getattr__, __dir__, list(__all__)
 
 
-
 __getattr__, __dir__, __all__ = _attach(
     __name__,
     submodules=[],
     submod_attrs={
-        "commands.user": ["notebook_login"],
         "app": [
-            "interface",
+            "Interface",
+        ],
+        "image_generation": [
+            "generate_images",
+            "generate_images_flax",
+            "upload_folder_chunked",
         ],
         "stable_diffusion_pipeline": [
-            "StableDiffusionPipeline",
-            "NoCheck",
+            "StableDiffusionWalkPipeline",
+            "make_video_pyav",
+            "get_timesteps_arr",
         ],
-        "stable_diffusion_walk": [
-            "walk",
-            "SCHEDULERS",
-            "pipeline",
-        ],
-        "upsampling": [
-            "PipelineRealESRGAN"
-        ]
+        "flax_stable_diffusion_pipeline": ["FlaxStableDiffusionWalkPipeline"],
+        "upsampling": ["RealESRGANModel"],
     },
 )
 
-__version__ = "0.2.0"
+__version__ = "0.9.1"
